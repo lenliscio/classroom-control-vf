@@ -43,6 +43,7 @@ node default {
   # Example:
   #   class { 'my_class': }
   include users::admins
+  include users
   include skeleton
   include memcached
   include nginx
