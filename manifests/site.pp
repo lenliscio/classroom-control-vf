@@ -54,6 +54,9 @@ node default {
   notify { "This is a ${vmname} virtual machine.": }
 }
   
+  $message = hiera('message')
+  notify { $message: }
+  
   package { 'cowsay':
     ensure => present,
       provider => gem,
@@ -66,6 +69,7 @@ node default {
 #     mode => '0644',
 #     content => "Today I learned what it means to manage state using Puppet.\n",
 #  }
+
 
 
 exec { "cowsay 'Welcome to ${::fqdn}!' > /etc/motd":
